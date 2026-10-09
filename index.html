@@ -386,7 +386,7 @@ div.eh-hdr{display:block;width:100%;max-width:none;margin:0;padding:0;border:0;b
     if (c.experts && c.experts.length) h += '<div class="eh-cr-row"><h2>'+esc(t.experts)+'</h2><p>'+c.experts.map(esc).join(', ')+'</p></div>';
     return h;
   }
-  var DEVS = ['Cristina Vierna (CTC)', 'Miriam Pateiro (CTC)'];
+  var DEVS = ['Cristina Vierna (CTC)', 'Miriam Pateiro (CTC)', 'Dr hab. Aleksandra Górecka-Bruzda'];
   function devsText(code){ return T(code).devs + ': ' + DEVS.join(', '); }
   function paint(){
     Array.prototype.forEach.call(document.querySelectorAll('.eh-devs'), function(el){ el.textContent = devsText(); });
@@ -397,7 +397,7 @@ div.eh-hdr{display:block;width:100%;max-width:none;margin:0;padding:0;border:0;b
     if (n){ n.setAttribute('aria-label', t.lang);
       Array.prototype.forEach.call(n.querySelectorAll('.eh-lang'), function(b){ b.setAttribute('aria-pressed', norm(b.dataset.code)===norm(st.cur) ? 'true':'false'); }); }
     var html = creditsHTML();
-    Array.prototype.forEach.call(document.querySelectorAll('.eh-credits[data-eh-static]'), function(el){ el.innerHTML = html; });
+    Array.prototype.forEach.call(document.querySelectorAll('.eh-credits[data-eh-static]'), function(el){ el.innerHTML = html; el.hidden = !html; });
     document.documentElement.setAttribute('data-eh-lang', norm(st.cur));
   }
   function build(){
@@ -436,9 +436,7 @@ div.eh-hdr{display:block;width:100%;max-width:none;margin:0;padding:0;border:0;b
 /* ===== Credits shown at the bottom of the first page =====
    experts: add the expert names for THIS tool, e.g. "Name Surname (Organisation)" */
 window.EH_CREDITS = {
-  content: [
-    "Dr hab. Aleksandra Górecka-Bruzda"
-  ],
+  content: [],
   experts: []
 };
 </script>
@@ -1312,7 +1310,7 @@ en:{f_most:"5–6 days a week",f_week:"1–4 days a week",na:"Not applicable",
  scaleDesc:"Each answer is converted to 0–3 points. Indicators are weighted by their impact on welfare, and each principle gets a weighted score from 0 to 100; the overall score is the average of the four principles. “Don't know” and “Not applicable” answers are left out of the calculation (they do not count as 0), and the worst answer on a critical indicator triggers a priority alert.",
  weightsNote:"Weights (1.0 to 1.5), answer points and critical indicators are provisional values set by judgement while the tool was developed. They have not been validated: review by an expert panel and field testing are still needed.",
  freeNote:"Free-living herds: box questions are hidden, the questions marked N/A in the table start as “Not applicable” (the answer can be changed) and body condition scores 2 to 4 are accepted as normal seasonal change.",
- provisional:"Methodology EWI-MVP-0.11: provisional, pending scientific validation."},
+ provisional:"Methodology EWI-MVP-0.12: provisional, pending scientific validation."},
 be:{f_most:"5–6 dagen per week",f_week:"1–4 dagen per week",na:"Niet van toepassing",
  aboutNA:"“Weet niet” en “Niet van toepassing” tellen niet als 0: die vragen blijven buiten de berekening.",
  unit_animal:"Beoordeeld aan het paard",unit_animals:"Beoordeeld aan de paarden",unit_resource:"Beoordeeld aan de voorzieningen",unit_mgmt:"Managementpraktijk",
@@ -1325,7 +1323,7 @@ be:{f_most:"5–6 dagen per week",f_week:"1–4 dagen per week",na:"Niet van toe
  scaleDesc:"Elk antwoord wordt omgezet in 0–3 punten. Indicatoren wegen mee volgens hun invloed op het welzijn, en elk principe krijgt een gewogen score van 0 tot 100; de totale score is het gemiddelde van de vier principes. Antwoorden “Weet niet” en “Niet van toepassing” blijven buiten de berekening (ze tellen niet als 0), en het slechtste antwoord op een kritische indicator geeft een prioritaire waarschuwing.",
  weightsNote:"De gewichten (1,0 tot 1,5), de punten per antwoord en de kritische indicatoren zijn voorlopige waarden, bepaald op basis van inschatting tijdens de ontwikkeling. Ze zijn niet gevalideerd: een beoordeling door een expertpanel en praktijktests zijn nog nodig.",
  freeNote:"Vrij levende kuddes: boxvragen zijn verborgen, de vragen met N/A in de tabel staan standaard op “Niet van toepassing” (het antwoord kan worden gewijzigd) en conditiescores 2 tot 4 gelden als normale seizoensschommeling.",
- provisional:"Methode EWI-MVP-0.11: voorlopig, in afwachting van wetenschappelijke validatie."},
+ provisional:"Methode EWI-MVP-0.12: voorlopig, in afwachting van wetenschappelijke validatie."},
 fi:{f_most:"5–6 päivänä viikossa",f_week:"1–4 päivänä viikossa",na:"Ei sovellu",
  aboutNA:"“En tiedä” ja “Ei sovellu” eivät anna 0 pistettä: nämä kysymykset jätetään laskennan ulkopuolelle.",
  unit_animal:"Arvioidaan hevosesta",unit_animals:"Arvioidaan hevosista",unit_resource:"Arvioidaan tiloista",unit_mgmt:"Hoitokäytäntö",
@@ -1338,7 +1336,7 @@ fi:{f_most:"5–6 päivänä viikossa",f_week:"1–4 päivänä viikossa",na:"Ei
  scaleDesc:"Jokainen vastaus muunnetaan 0–3 pisteeksi. Indikaattorit painotetaan hyvinvointivaikutuksen mukaan, ja kukin periaate saa painotetut pisteet 0–100; kokonaispisteet ovat neljän periaatteen keskiarvo. “En tiedä”- ja “Ei sovellu” -vastaukset jätetään laskennan ulkopuolelle (ne eivät ole 0 pistettä), ja kriittisen indikaattorin huonoin vastaus antaa kiireellisen hälytyksen.",
  weightsNote:"Painoarvot (1,0–1,5), vastausten pisteet ja kriittiset indikaattorit ovat alustavia, kehitystyön aikana harkinnan perusteella asetettuja arvoja. Niitä ei ole validoitu: asiantuntijapaneelin arvio ja kenttätestaus tarvitaan vielä.",
  freeNote:"Vapaana elävät laumat: karsinakysymykset piilotetaan, taulukossa N/A-merkityt kysymykset ovat oletuksena “Ei sovellu” (vastausta voi muuttaa) ja kuntoluokat 2–4 hyväksytään normaalina vuodenaikaisvaihteluna.",
- provisional:"Menetelmä EWI-MVP-0.11: alustava, odottaa tieteellistä validointia."},
+ provisional:"Menetelmä EWI-MVP-0.12: alustava, odottaa tieteellistä validointia."},
 fr:{f_most:"5 à 6 jours par semaine",f_week:"1 à 4 jours par semaine",na:"Non applicable",
  aboutNA:"« Je ne sais pas » et « Non applicable » ne valent pas 0 : ces questions sont exclues du calcul.",
  unit_animal:"Évalué sur le cheval",unit_animals:"Évalué sur les chevaux",unit_resource:"Évalué sur les installations",unit_mgmt:"Pratique de gestion",
@@ -1351,7 +1349,7 @@ fr:{f_most:"5 à 6 jours par semaine",f_week:"1 à 4 jours par semaine",na:"Non 
  scaleDesc:"Chaque réponse est convertie en 0 à 3 points. Les indicateurs sont pondérés selon leur impact sur le bien-être et chaque principe reçoit un score pondéré de 0 à 100 ; le score global est la moyenne des quatre principes. Les réponses « Je ne sais pas » et « Non applicable » sont exclues du calcul (elles ne valent pas 0), et la pire réponse à un indicateur critique déclenche une alerte prioritaire.",
  weightsNote:"Les pondérations (1,0 à 1,5), les points par réponse et les indicateurs critiques sont des valeurs provisoires, fixées par jugement pendant le développement. Ils n'ont pas été validés : un examen par un panel d'experts et des tests de terrain restent nécessaires.",
  freeNote:"Troupeaux en liberté : les questions sur le box sont masquées, les questions marquées N/A dans le tableau sont réglées par défaut sur « Non applicable » (la réponse peut être modifiée) et les notes d'état corporel de 2 à 4 sont acceptées comme variation saisonnière normale.",
- provisional:"Méthodologie EWI-MVP-0.11 : provisoire, en attente de validation scientifique."},
+ provisional:"Méthodologie EWI-MVP-0.12 : provisoire, en attente de validation scientifique."},
 de:{f_most:"5–6 Tage pro Woche",f_week:"1–4 Tage pro Woche",na:"Nicht zutreffend",
  aboutNA:"„Weiß nicht“ und „Nicht zutreffend“ zählen nicht als 0: Diese Fragen bleiben bei der Berechnung außen vor.",
  unit_animal:"Am Pferd beurteilt",unit_animals:"An den Pferden beurteilt",unit_resource:"An der Anlage beurteilt",unit_mgmt:"Managementpraxis",
@@ -1364,7 +1362,7 @@ de:{f_most:"5–6 Tage pro Woche",f_week:"1–4 Tage pro Woche",na:"Nicht zutref
  scaleDesc:"Jede Antwort wird in 0–3 Punkte umgerechnet. Die Indikatoren sind nach ihrem Einfluss auf das Wohlergehen gewichtet, und jedes Prinzip erhält einen gewichteten Wert von 0 bis 100; der Gesamtwert ist der Durchschnitt der vier Prinzipien. Antworten „Weiß nicht“ und „Nicht zutreffend“ bleiben bei der Berechnung außen vor (sie zählen nicht als 0), und die schlechteste Antwort bei einem kritischen Indikator löst einen vorrangigen Hinweis aus.",
  weightsNote:"Gewichtungen (1,0 bis 1,5), Punkte je Antwort und kritische Indikatoren sind vorläufige Werte, die während der Entwicklung nach Einschätzung festgelegt wurden. Sie sind nicht validiert: Eine Prüfung durch ein Expertengremium und Praxistests stehen noch aus.",
  freeNote:"Frei lebende Herden: Boxenfragen sind ausgeblendet, die in der Tabelle mit N/A markierten Fragen stehen zunächst auf „Nicht zutreffend“ (die Antwort kann geändert werden), und Körperkonditionswerte von 2 bis 4 gelten als normale jahreszeitliche Schwankung.",
- provisional:"Methodik EWI-MVP-0.11: vorläufig, wissenschaftliche Validierung ausstehend."},
+ provisional:"Methodik EWI-MVP-0.12: vorläufig, wissenschaftliche Validierung ausstehend."},
 pl:{f_most:"5–6 dni w tygodniu",f_week:"1–4 dni w tygodniu",na:"Nie dotyczy",
  aboutNA:"Odpowiedzi „Nie wiem” i „Nie dotyczy” nie oznaczają 0 punktów: te pytania są pomijane w obliczeniach.",
  unit_animal:"Oceniane na koniu",unit_animals:"Oceniane na koniach",unit_resource:"Oceniane w obiekcie",unit_mgmt:"Praktyka zarządzania",
@@ -1377,7 +1375,7 @@ pl:{f_most:"5–6 dni w tygodniu",f_week:"1–4 dni w tygodniu",na:"Nie dotyczy"
  scaleDesc:"Każda odpowiedź jest przeliczana na 0–3 punkty. Wskaźniki mają wagi zależne od wpływu na dobrostan, a każda zasada otrzymuje ważony wynik od 0 do 100; wynik łączny to średnia czterech zasad. Odpowiedzi „Nie wiem” i „Nie dotyczy” są pomijane w obliczeniach (nie liczą się jako 0), a najgorsza odpowiedź przy wskaźniku krytycznym uruchamia alert priorytetowy.",
  weightsNote:"Wagi (od 1,0 do 1,5), punkty za odpowiedzi i wskaźniki krytyczne to wartości tymczasowe, ustalone szacunkowo podczas opracowywania narzędzia. Nie zostały zwalidowane: potrzebna jest jeszcze ocena panelu ekspertów i testy terenowe.",
  freeNote:"Stada żyjące swobodnie: pytania o boks są ukryte, pytania oznaczone w tabeli jako N/A mają domyślnie odpowiedź „Nie dotyczy” (można ją zmienić), a oceny kondycji od 2 do 4 są uznawane za normalną zmienność sezonową.",
- provisional:"Metodyka EWI-MVP-0.11: tymczasowa, oczekuje na walidację naukową."},
+ provisional:"Metodyka EWI-MVP-0.12: tymczasowa, oczekuje na walidację naukową."},
 pt:{f_most:"5–6 dias por semana",f_week:"1–4 dias por semana",na:"Não aplicável",
  aboutNA:"“Não sei” e “Não aplicável” não valem 0: essas perguntas ficam fora do cálculo.",
  unit_animal:"Avaliado no cavalo",unit_animals:"Avaliado nos cavalos",unit_resource:"Avaliado nas instalações",unit_mgmt:"Prática de maneio",
@@ -1390,7 +1388,7 @@ pt:{f_most:"5–6 dias por semana",f_week:"1–4 dias por semana",na:"Não aplic
  scaleDesc:"Cada resposta é convertida em 0–3 pontos. Os indicadores são ponderados pelo seu impacto no bem-estar e cada princípio recebe uma pontuação ponderada de 0 a 100; a pontuação global é a média dos quatro princípios. As respostas “Não sei” e “Não aplicável” ficam fora do cálculo (não valem 0) e a pior resposta num indicador crítico gera um alerta prioritário.",
  weightsNote:"Os pesos (1,0 a 1,5), os pontos por resposta e os indicadores críticos são valores provisórios, definidos por estimativa durante o desenvolvimento. Não foram validados: falta ainda a revisão por um painel de especialistas e testes de campo.",
  freeNote:"Manadas em liberdade: as perguntas sobre a boxe ficam ocultas, as perguntas marcadas com N/A na tabela começam como “Não aplicável” (a resposta pode ser alterada) e as notas de condição corporal de 2 a 4 são aceites como variação sazonal normal.",
- provisional:"Metodologia EWI-MVP-0.11: provisória, pendente de validação científica."},
+ provisional:"Metodologia EWI-MVP-0.12: provisória, pendente de validação científica."},
 ro:{f_most:"5–6 zile pe săptămână",f_week:"1–4 zile pe săptămână",na:"Nu se aplică",
  aboutNA:"„Nu știu” și „Nu se aplică” nu valorează 0: aceste întrebări rămân în afara calculului.",
  unit_animal:"Se evaluează pe cal",unit_animals:"Se evaluează pe cai",unit_resource:"Se evaluează la adăpost și dotări",unit_mgmt:"Practică de management",
@@ -1403,7 +1401,7 @@ ro:{f_most:"5–6 zile pe săptămână",f_week:"1–4 zile pe săptămână",na
  scaleDesc:"Fiecare răspuns este transformat în 0–3 puncte. Indicatorii sunt ponderați după impactul asupra bunăstării, iar fiecare principiu primește un scor ponderat de la 0 la 100; scorul total este media celor patru principii. Răspunsurile „Nu știu” și „Nu se aplică” rămân în afara calculului (nu valorează 0), iar cel mai slab răspuns la un indicator critic declanșează o alertă prioritară.",
  weightsNote:"Ponderile (de la 1,0 la 1,5), punctele pe răspuns și indicatorii critici sunt valori provizorii, stabilite prin estimare în timpul dezvoltării. Nu au fost validate: mai sunt necesare evaluarea de către un grup de experți și testarea pe teren.",
  freeNote:"Cai în libertate: întrebările despre boxă sunt ascunse, întrebările marcate N/A în tabel pornesc cu „Nu se aplică” (răspunsul poate fi schimbat), iar notele de condiție corporală de la 2 la 4 sunt acceptate ca variație sezonieră normală.",
- provisional:"Metodologia EWI-MVP-0.11: provizorie, în așteptarea validării științifice."},
+ provisional:"Metodologia EWI-MVP-0.12: provizorie, în așteptarea validării științifice."},
 es:{f_most:"5–6 días por semana",f_week:"1–4 días por semana",na:"No aplica",
  aboutNA:"«No lo sé» y «No aplica» no puntúan 0: esas preguntas quedan fuera del cálculo.",
  unit_animal:"Se valora en el caballo",unit_animals:"Se valora en los caballos",unit_resource:"Se valora en las instalaciones",unit_mgmt:"Práctica de manejo",
@@ -1416,7 +1414,7 @@ es:{f_most:"5–6 días por semana",f_week:"1–4 días por semana",na:"No aplic
  scaleDesc:"Cada respuesta se convierte en 0–3 puntos. Los indicadores tienen un peso según su impacto en el bienestar, y cada principio obtiene una puntuación ponderada de 0 a 100; la puntuación global es la media de los cuatro principios. Las respuestas «No lo sé» y «No aplica» quedan fuera del cálculo (no puntúan 0), y la peor respuesta en un indicador crítico activa una alerta de atención prioritaria.",
  weightsNote:"Los pesos (de 1,0 a 1,5), los puntos por respuesta y los indicadores críticos son valores provisionales, fijados por criterio durante el desarrollo. No están validados: falta la revisión por un panel de expertos y las pruebas de campo.",
  freeNote:"Manadas en libertad: se ocultan las preguntas sobre el box, las preguntas marcadas con N/A en la tabla empiezan como «No aplica» (la respuesta se puede cambiar) y las notas de condición corporal de 2 a 4 se aceptan como variación estacional normal.",
- provisional:"Metodología IBE-MVP-0.11: provisional, pendiente de validación científica."}
+ provisional:"Metodología IBE-MVP-0.12: provisional, pendiente de validación científica."}
 };
 Object.keys(T_UPD5).forEach(k=>Object.assign(T[k],T_UPD5[k]));
 /* ===== v0.7 strings: saved-assessment notice, group wording rule, Spanish "caballos silvestres" ===== */
@@ -1645,6 +1643,27 @@ ro:{qbaNote:"Bilanțul net (media pozitivă − media negativă) este un rezumat
 es:{qbaNote:"El balance neto (media positiva − media negativa) es un resumen sencillo de campo y no cambia la puntuación: elige tú la respuesta a esta pregunta. El resultado formal del QBA en AWIN es un análisis de componentes principales frente a una población de referencia."}
 };
 Object.keys(T_UPD12).forEach(k=>Object.assign(T[k],T_UPD12[k]));
+const T_UPD13={
+en:{qbaNotScored:"Not included in the score",qbaTeaser:"QBA scoring sheet (AWIN, 13 descriptors): it is part of the full assessment.",
+ qbaNote:"The net balance (positive mean − negative mean) is a simple field summary of the horse's emotional profile and is not included in the EWI score. AWIN's formal QBA output is a principal component analysis against a reference population."},
+be:{qbaNotScored:"Telt niet mee in de score",qbaTeaser:"QBA-scoreformulier (AWIN, 13 descriptoren): het hoort bij de volledige beoordeling.",
+ qbaNote:"De nettobalans (positief gemiddelde − negatief gemiddelde) is een eenvoudige samenvatting in het veld van het emotionele profiel van het paard en telt niet mee in de EWI-score. De formele QBA-uitkomst van AWIN is een hoofdcomponentenanalyse ten opzichte van een referentiepopulatie."},
+fi:{qbaNotScored:"Ei lasketa pisteisiin",qbaTeaser:"QBA-pisteytyslomake (AWIN, 13 kuvailevaa termiä): se kuuluu täyteen arviointiin.",
+ qbaNote:"Nettotasapaino (positiivisten keskiarvo − negatiivisten keskiarvo) on yksinkertainen kenttäyhteenveto hevosen tunneprofiilista, eikä sitä lasketa EWI-pisteisiin. AWINin virallinen QBA-tulos on pääkomponenttianalyysi suhteessa vertailupopulaatioon."},
+fr:{qbaNotScored:"Non pris en compte dans le score",qbaTeaser:"Grille de notation QBA (AWIN, 13 descripteurs) : elle fait partie de l'évaluation complète.",
+ qbaNote:"Le bilan net (moyenne positive − moyenne négative) est un simple résumé de terrain du profil émotionnel du cheval et n'est pas pris en compte dans le score EWI. Le résultat officiel du QBA d'AWIN est une analyse en composantes principales par rapport à une population de référence."},
+de:{qbaNotScored:"Fließt nicht in den Wert ein",qbaTeaser:"QBA-Bewertungsbogen (AWIN, 13 Deskriptoren): Er gehört zur vollständigen Bewertung.",
+ qbaNote:"Die Nettobilanz (positiver Mittelwert − negativer Mittelwert) ist eine einfache Zusammenfassung des emotionalen Profils des Pferdes für die Praxis und fließt nicht in den EWI-Wert ein. Das formale QBA-Ergebnis von AWIN ist eine Hauptkomponentenanalyse gegenüber einer Referenzpopulation."},
+pl:{qbaNotScored:"Nie wlicza się do wyniku",qbaTeaser:"Arkusz oceny QBA (AWIN, 13 deskryptorów): jest częścią pełnej oceny.",
+ qbaNote:"Bilans netto (średnia pozytywnych − średnia negatywnych) to proste terenowe podsumowanie profilu emocjonalnego konia i nie jest wliczany do wyniku EWI. Formalnym wynikiem QBA w AWIN jest analiza głównych składowych względem populacji referencyjnej."},
+pt:{qbaNotScored:"Não entra na pontuação",qbaTeaser:"Folha de pontuação QBA (AWIN, 13 descritores): faz parte da avaliação completa.",
+ qbaNote:"O balanço líquido (média positiva − média negativa) é um resumo simples de campo do perfil emocional do cavalo e não entra na pontuação EWI. O resultado formal do QBA no AWIN é uma análise de componentes principais face a uma população de referência."},
+ro:{qbaNotScored:"Nu intră în scor",qbaTeaser:"Fișă de notare QBA (AWIN, 13 descriptori): face parte din evaluarea completă.",
+ qbaNote:"Bilanțul net (media pozitivă − media negativă) este un rezumat simplu de teren al profilului emoțional al calului și nu intră în scorul EWI. Rezultatul oficial al QBA în AWIN este o analiză a componentelor principale față de o populație de referință."},
+es:{qbaNotScored:"No entra en la puntuación",qbaTeaser:"Hoja de puntuación QBA (AWIN, 13 descriptores): forma parte de la evaluación completa.",
+ qbaNote:"El balance neto (media positiva − media negativa) es un resumen sencillo de campo del perfil emocional del caballo y no entra en la puntuación IBE. El resultado formal del QBA en AWIN es un análisis de componentes principales frente a una población de referencia."}
+};
+Object.keys(T_UPD13).forEach(k=>Object.assign(T[k],T_UPD13[k]));
 /* ===== EWI INDICATORS (EWI-MVP-0.5) =====
    Provisional methodology, pending scientific validation. Questions refer to the AWIN welfare assessment protocol
    for horses (AWIN, 2015. DOI: 10.13130/AWIN_HORSES_2015) and to EUnetHorse Technical Sheets (TS) where relevant.
@@ -2384,13 +2403,13 @@ const INDICATORS = [
 "en": {
 "name": "Paddock space per horse",
 "question": "Is there at least 70 m² of paddock per adult horse (85 m² per mare with foal)?",
-"help": "Measure the paddock (length × width) and divide by the number of horses that use it at the same time. Reference values: 70 m² per adult horse and 85 m² per mare with foal, the minimum applied in Poland. Check the rules that apply in your country.",
+"help": "Measure the paddock (length × width) and divide by the number of horses that use it at the same time. Reference values: 70 m² per adult horse and 85 m² per mare with foal, the minimum applied in Poland. Check the rules that apply in your country. How many days a week and how many hours the horses are loose is asked in Appropriate behaviour (free movement and hours loose outdoors).",
 "rec": "Enlarge the paddock, reduce the number of horses that use it at the same time, or turn them out in turns."
 },
 "es": {
 "name": "Superficie de paddock por caballo",
 "question": "¿Hay al menos 70 m² de paddock por caballo adulto (85 m² por yegua con potro)?",
-"help": "Mide el paddock (largo × ancho) y divide entre el número de caballos que lo usan a la vez. Valores de referencia: 70 m² por caballo adulto y 85 m² por yegua con potro, el mínimo que se aplica en Polonia. Comprueba la normativa de tu país.",
+"help": "Mide el paddock (largo × ancho) y divide entre el número de caballos que lo usan a la vez. Valores de referencia: 70 m² por caballo adulto y 85 m² por yegua con potro, el mínimo que se aplica en Polonia. Comprueba la normativa de tu país. Cuántos días a la semana y cuántas horas están sueltos los caballos se pregunta en Comportamiento apropiado (movimiento libre y horas sueltos al aire libre).",
 "rec": "Amplía el paddock, reduce el número de caballos que lo usan a la vez o sácalos por turnos."
 }
 },
@@ -2554,23 +2573,23 @@ const INDICATORS = [
 ],
 "tx": {
 "en": {
-"name": "Days out of the box",
-"question": "How often does the horse leave the box (turnout, riding, lunging, walking in hand)?",
-"help": "Count the days in a normal week on which the horse leaves the box, as in the AWIN exercise indicator.",
-"rec": "Take the horse out of the box every day and avoid long periods of continuous stabling."
+"name": "Exercise out of the box",
+"question": "How often is the horse taken out of the box for exercise (riding, lunging, walking in hand or horse walker)?",
+"help": "Count the days in a normal week on which the horse is exercised out of the box, as in the AWIN exercise indicator. Time loose in a paddock or pasture is asked in Appropriate behaviour.",
+"rec": "Exercise the horse every day and avoid long periods of continuous stabling."
 },
 "es": {
-"name": "Días fuera del box",
-"question": "¿Con qué frecuencia sale el caballo del box (suelta, monta, cuerda, paseo del diestro)?",
-"help": "Cuenta los días de una semana normal en los que el caballo sale del box, como en el indicador de ejercicio de AWIN.",
-"rec": "Saca al caballo del box todos los días y evita periodos largos de estabulación continua."
+"name": "Ejercicio fuera del box",
+"question": "¿Con qué frecuencia se saca al caballo del box para hacer ejercicio (monta, cuerda, paseo del diestro o caminador)?",
+"help": "Cuenta los días de una semana normal en los que el caballo hace ejercicio fuera del box, como en el indicador de ejercicio de AWIN. El tiempo suelto en paddock o pradera se pregunta en Comportamiento apropiado.",
+"rec": "Haz que el caballo haga ejercicio todos los días y evita periodos largos de estabulación continua."
 }
 },
 "mgmt": true,
 "unit": "mgmt",
 "gq": {
-"en": "How often do the horses leave their boxes (turnout, riding, lunging, walking in hand)?",
-"es": "¿Con qué frecuencia salen los caballos del box (suelta, monta, cuerda, paseo del diestro)?"
+"en": "How often are the horses taken out of their boxes for exercise (riding, lunging, walking in hand or horse walker)?",
+"es": "¿Con qué frecuencia se saca a los caballos del box para hacer ejercicio (monta, cuerda, paseo del diestro o caminador)?"
 }
 },
 {
@@ -2591,42 +2610,42 @@ const INDICATORS = [
 "dep": "HOU-09",
 "opts": [
 {
-"k": "h2",
+"k": "e60",
 "p": 3,
-"en": "2 hours or more",
-"es": "2 horas o más"
+"en": "1 hour or more",
+"es": "1 hora o más"
 },
 {
-"k": "h1",
+"k": "e30",
 "p": 1.5,
-"en": "1 to 2 hours",
-"es": "De 1 a 2 horas"
+"en": "30 to 60 minutes",
+"es": "De 30 a 60 minutos"
 },
 {
-"k": "h0",
+"k": "e0",
 "p": 0,
-"en": "Less than 1 hour",
-"es": "Menos de 1 hora"
+"en": "Less than 30 minutes",
+"es": "Menos de 30 minutos"
 }
 ],
 "tx": {
 "en": {
-"name": "Hours out of the box",
-"question": "On the days it goes out, how long is the horse out of the box?",
-"help": "Add up all the time out of the box on a normal day out: turnout, riding, lunging and walking in hand.",
-"rec": "Aim for at least 2 hours out of the box on each day, with as much of that time as possible loose in a paddock or pasture."
+"name": "Hours of exercise",
+"question": "On the days it is exercised, how long is the horse out of the box?",
+"help": "Add up the exercise time on a normal day: riding, lunging, walking in hand or horse walker. Time loose in a paddock or pasture is asked in Appropriate behaviour.",
+"rec": "Aim for at least 1 hour of exercise on each day, and add daily time loose in a paddock or pasture."
 },
 "es": {
-"name": "Horas fuera del box",
-"question": "Los días que sale, ¿cuánto tiempo está el caballo fuera del box?",
-"help": "Suma todo el tiempo fuera del box en un día normal de salida: suelta, monta, cuerda y paseo del diestro.",
-"rec": "Procura al menos 2 horas fuera del box cada día, con la mayor parte posible de ese tiempo suelto en un paddock o pradera."
+"name": "Horas de ejercicio",
+"question": "Los días que hace ejercicio, ¿cuánto tiempo está el caballo fuera del box?",
+"help": "Suma el tiempo de ejercicio en un día normal: monta, cuerda, paseo del diestro o caminador. El tiempo suelto en paddock o pradera se pregunta en Comportamiento apropiado.",
+"rec": "Procura al menos 1 hora de ejercicio cada día y añade tiempo diario suelto en paddock o pradera."
 }
 },
 "unit": "mgmt",
 "gq": {
-"en": "On the days they go out, how long are the horses out of their boxes?",
-"es": "Los días que salen, ¿cuánto tiempo están los caballos fuera del box?"
+"en": "On the days they are exercised, how long are the horses out of their boxes?",
+"es": "Los días que hacen ejercicio, ¿cuánto tiempo están los caballos fuera del box?"
 }
 },
 {
@@ -3699,7 +3718,46 @@ const INDICATORS = [
 "en": "How many horses move away or react negatively when a person approaches or touches them?",
 "es": "¿Cuántos caballos se alejan o reaccionan negativamente cuando una persona se acerca o los toca?"
 },
-"unit": "animal"
+"unit": "animal",
+"typeFree": "scale",
+"optsFree": [
+{
+"k": "approach",
+"p": 3,
+"en": "Came towards the person on its own",
+"es": "Se acercó a la persona por iniciativa propia"
+},
+{
+"k": "stay",
+"p": 3,
+"en": "Stayed where it was, did not move away",
+"es": "Se quedó donde estaba, sin alejarse"
+},
+{
+"k": "away",
+"p": 0,
+"en": "Moved away before the person stopped",
+"es": "Se alejó antes de que la persona se detuviera"
+}
+],
+"gFree": {
+"en": "How many horses move away before the person stops at two horse lengths?",
+"es": "¿Cuántos caballos se alejan antes de que la persona se detenga a dos cuerpos de caballo?"
+},
+"free": {
+"en": {
+"name": "Reaction to an approaching person",
+"question": "How does the horse react when a person walks slowly towards it and stops two horse lengths away?",
+"help": "Start 10 m from the horse and walk towards it at one step per second, watching the horse and the rest of the group: a stallion may defend the group, so stop if he threatens you. Do not come closer than two horse lengths. Stop there and watch the horse for 20 seconds, waiting to see whether it comes to you; use this time for the QBA. Never touch the horse, even if it allows it. Horses that accept people are less stressed when they have to be gathered and handled.",
+"rec": "Get the horses used to the calm presence of people with regular quiet visits, without catching them, so that gathering and handling are less stressful when needed."
+},
+"es": {
+"name": "Reacción ante una persona que se acerca",
+"question": "¿Cómo reacciona el caballo cuando una persona camina despacio hacia él y se detiene a dos cuerpos de caballo?",
+"help": "Empieza a 10 m del caballo y camina hacia él a un paso por segundo, observando al caballo y al resto del grupo: el semental puede defender al grupo, así que detente si te amenaza. No te acerques a menos de dos cuerpos de caballo. Detente ahí y observa al caballo durante 20 segundos, esperando a ver si se acerca a ti; usa ese tiempo para el QBA. No toques nunca al caballo, aunque lo permita. Los caballos que aceptan a las personas sufren menos estrés cuando hay que reunirlos y manejarlos.",
+"rec": "Acostumbra a los caballos a la presencia tranquila de personas con visitas regulares y sosegadas, sin capturarlos, para que reunirlos y manejarlos sea menos estresante cuando haga falta."
+}
+}
 },
 {
 "id": "EWI-BEH-009",
@@ -3806,60 +3864,6 @@ const INDICATORS = [
 },
 "mgmt": true,
 "unit": "mgmt"
-},
-{
-"id": "EWI-BEH-008",
-"code": "BEH-10",
-"d": "behaviour",
-"w": 1.2,
-"crit": false,
-"lvl": 2,
-"house": "all",
-"type": "scale",
-"ref": [
-"AWIN",
-"Qualitative Behaviour Assessment",
-51
-],
-"tx": {
-"en": {
-"name": "Body language",
-"question": "What is the horse's body language during the visit?",
-"help": "Watch from outside the box for 30 seconds, then approach calmly and scratch the withers for 30 seconds. Relaxed: soft ears and eyes, lowered head, calm chewing, curious. Tense or alarmed: raised head, wide eyes, ears flat back. Dull: withdrawn, not interested in its surroundings.",
-"rec": "If the horse is often tense or dull, look for the causes (pain, housing, handling) with your vet or a behaviour specialist."
-},
-"es": {
-"name": "Lenguaje corporal",
-"question": "¿Cómo es el lenguaje corporal del caballo durante la visita?",
-"help": "Observa desde fuera del box 30 segundos, después acércate con calma y ráscale la cruz otros 30 segundos. Relajado: orejas y ojos suaves, cabeza baja, masticación tranquila, curioso. Tenso o alarmado: cabeza alta, ojos muy abiertos, orejas pegadas hacia atrás. Apático: retraído, sin interés por el entorno.",
-"rec": "Si el caballo está a menudo tenso o apático, busca las causas (dolor, alojamiento, manejo) con tu veterinario o un especialista en comportamiento."
-}
-},
-"opts": [
-{
-"k": "relaxed",
-"p": 3,
-"en": "Mostly relaxed",
-"es": "Mayormente relajado"
-},
-{
-"k": "mixed",
-"p": 1.5,
-"en": "Mixed",
-"es": "Mixto"
-},
-{
-"k": "tense",
-"p": 0,
-"en": "Mostly tense, alarmed or dull",
-"es": "Mayormente tenso, alarmado o apático"
-}
-],
-"g": {
-"en": "How many horses look tense, alarmed or dull?",
-"es": "¿Cuántos caballos parecen tensos, alarmados o apáticos?"
-},
-"unit": "animal"
 }
 ];
 const IND_TR = {};
@@ -3949,14 +3953,18 @@ function boxMin(h){return BOX_MIN.find(r=>h<r[0])[1];}
    AWIN Qualitative Behaviour Assessment for single-stabled horses: 13 descriptors, in the order of the protocol,
    each scored on a 120 mm visual analogue scale (distance from the left end, in mm).
    Field summary: mean of the negative terms, mean of the positive terms and net balance (positive - negative).
-   The sheet does not change the score: the assessor chooses the answer of the body-language question. */
-const QBA_LEN=120, QBA_IND="EWI-BEH-008";
+   The sheet is a profile of the horse and is not included in the score. It has its own card in Appropriate behaviour. */
+const QBA_LEN=120, QBA_ID="EWI-QBA";
+const QBA_INFO={id:QBA_ID,code:"QBA",d:"behaviour",ref:["AWIN","Qualitative Behaviour Assessment",51],
+  tx:{en:{name:"Qualitative Behaviour Assessment (QBA)",help:"Watch the horse from outside the box or paddock for 30 seconds, then approach calmly and scratch the withers for 30 seconds, as in the AWIN protocol. Score the descriptors after the whole observation."},
+      es:{name:"Evaluación cualitativa del comportamiento (QBA)",help:"Observa al caballo desde fuera del box o del paddock durante 30 segundos y después acércate con calma y ráscale la cruz otros 30 segundos, como en el protocolo AWIN. Puntúa los descriptores al terminar toda la observación."}},
+  free:{en:{help:"Use the approach test (reaction to an approaching person): from two horse lengths, watch the horse for 20 seconds without touching it. Score the descriptors after the observation."},
+        es:{help:"Usa la prueba de acercamiento (reacción ante una persona que se acerca): a dos cuerpos de caballo, observa al caballo durante 20 segundos sin tocarlo. Puntúa los descriptores al terminar la observación."}}};
 const QBA=[["aggressive","neg"],["alarmed","neg"],["annoyed","neg"],["apathetic","neg"],["atease","pos"],["curious","pos"],["friendly","pos"],["fearful","neg"],["happy","pos"],["contact","pos"],["relaxed","pos"],["pushy","neg"],["uneasy","neg"]].map(([k,c])=>({k,c}));
 const qbaVal=k=>{const v=S.qba&&S.qba[k];return typeof v==="number"&&v>=0&&v<=QBA_LEN?v:null;};
 function qbaStats(){const st=c=>{const all=QBA.filter(q=>q.c===c),v=all.map(q=>qbaVal(q.k)).filter(x=>x!=null),sum=v.reduce((a,b)=>a+b,0);return {n:v.length,total:all.length,sum,mean:v.length?sum/v.length:null};};
   const neg=st("neg"),pos=st("pos"),n=neg.n+pos.n;return {neg,pos,n,complete:n===QBA.length,bal:neg.mean!=null&&pos.mean!=null?pos.mean-neg.mean:null};}
-const qbaCode=()=>{const q=INDICATORS.find(i=>i.id===QBA_IND);return q?q.code:"";};
-const qbaActive=()=>!isGroup()&&ACTIVE().some(i=>i.id===QBA_IND);   /* the sheet is for one horse; AWIN uses other descriptors for groups */
+const qbaActive=()=>!isGroup()&&S.info.level==="2";   /* the sheet is for one horse; AWIN uses other descriptors for groups */
 const num1=v=>(Math.round(v*10)/10).toFixed(1).replace(".",lang==="en"?".":",");
 const signed1=v=>{const r=Math.round(v*10)/10;return (r>0?"+":r<0?"−":"")+num1(Math.abs(r));};
 
@@ -4063,9 +4071,9 @@ function qbaResHTML(st,brief){const f=m=>m==null?"–":num1(m),bal=st.bal,pct=ba
     <div class="qba-balbar"><div class="qba-bar"><span class="zero"></span>${bal==null?"":`<span class="fill" style="${bal>=0?"left":"right"}:50%;width:${pct.toFixed(1)}%;background:var(--${bal>=0?"safe":"danger"})"></span>`}</div><div class="qba-barscale"><span>−${QBA_LEN}</span><span>0</span><span>+${QBA_LEN}</span></div></div></div>
    ${st.complete?"":`<p class="qba-msg" role="status">${esc(t("qbaInc",{n:st.n}))}</p>`}`;}
 /* pointer shown in Appropriate behaviour while the question that carries the sheet is not on screen */
-function qbaTeaserHTML(){const qi=INDICATORS.find(i=>i.id===QBA_IND);if(S.info.level==="2"||!qi)return "";
+function qbaTeaserHTML(){if(S.info.level==="2")return "";
   if(isGroup())return `<p class="area-note">📏 ${esc(t("qbaGroup"))}</p>`;
-  return `<div class="qba-teaser" id="qbaTeaser"><span>📏 ${esc(t("qbaTeaser",{c:qi.code}))}</span><button type="button" class="act secondary" data-a="qbaGo">${esc(t("qbaGo"))} →</button></div>`;}
+  return `<div class="qba-teaser" id="qbaTeaser"><span>📏 ${esc(t("qbaTeaser"))}</span><button type="button" class="act secondary" data-a="qbaGo">${esc(t("qbaGo"))} →</button></div>`;}
 function qbaHTML(){
   if(isGroup())return `<p class="preset-note" style="margin:0 0 10px">📏 ${esc(t("qbaGroup"))}</p>`;
   const st=qbaStats();
@@ -4079,9 +4087,9 @@ function qbaHTML(){
    </div></details>`;}
 /* set (or clear, v == null) one descriptor and update the card in place, so that a drag is never interrupted */
 function qbaSet(k,v){S.qba=S.qba||{};if(v==null)delete S.qba[k];else S.qba[k]=Math.max(0,Math.min(QBA_LEN,Math.round(v*10)/10));
-  const st=qbaStats(),ind=INDICATORS.find(i=>i.id===QBA_IND);
+  const st=qbaStats();
   saveSoon();
-  const el=document.getElementById("card_"+QBA_IND);if(!el)return;
+  const el=document.getElementById("card_"+QBA_ID);if(!el)return;
   const row=el.querySelector(`[data-qrow="${k}"]`),val=qbaVal(k);
   if(row){row.classList.toggle("set",val!=null);const vas=row.querySelector(".qba-vas"),mk=row.querySelector(".mk");
     if(val==null){vas.removeAttribute("aria-valuenow");vas.setAttribute("aria-valuetext",t("notAnsweredB"));}
@@ -4089,9 +4097,19 @@ function qbaSet(k,v){S.qba=S.qba||{};if(v==null)delete S.qba[k];else S.qba[k]=Ma
     row.querySelector(".qba-val").innerHTML=(val==null?"–":num1(val))+" <small>mm</small>";}
   const res=el.querySelector("#qbaRes");if(res)res.innerHTML=qbaResHTML(st);
   const nEl=el.querySelector("#qbaN");if(nEl)nEl.textContent=st.n+"/"+QBA.length;
-  el.querySelectorAll('.resp [data-a="resp"]').forEach(bt=>bt.setAttribute("aria-pressed",String(ans(ind)===bt.dataset.k)));
-  const bd=el.querySelector(".zone-top .badge");if(bd){bd.className="badge "+scoreBadge(itemScore(ind));bd.textContent=answerLabel(ind);}el.classList.toggle("done",ans(ind)!=null);
-  const a=document.getElementById("areas");if(a)a.innerHTML=areaBtns();const pg=document.getElementById("prog");if(pg)pg.innerHTML=progressHTML();}
+  el.classList.toggle("done",st.n>0);}
+/* the QBA card: same look as a question card, without answer buttons */
+function qbaCardHTML(){const id=QBA_ID,ph=S.photos[id]||[],cm=S.comments[id]||"",showC=openComments.has(id)||cm;
+  return `<article class="zone qba-zone${qbaStats().n?" done":""}" id="card_${id}" style="--ac:var(--c-behaviour)">
+   <div class="zone-top"><div class="zone-name"><span class="qcode">QBA</span>${esc(tx(QBA_INFO,"name"))}</div><span class="badge b-empty">${esc(t("qbaNotScored"))}</span></div>
+   <div class="observe"><div class="lbl">${esc(t("whatObserve"))}</div><p>${esc(tx(QBA_INFO,"help"))}</p><div class="chips"><span class="awin">${esc(refLabel(QBA_INFO))}</span><span class="unit">🐴 ${esc(t("unit_animal"))}</span></div></div>
+   ${qbaHTML()}
+   <div class="photo-row"><button type="button" class="photo-btn" data-a="cam" data-id="${id}">📷 ${esc(t("takePhoto"))}</button><button type="button" class="photo-btn" data-a="upl" data-id="${id}">⬆ ${esc(t("uploadPhoto"))}</button><button type="button" class="photo-btn${cm?" has":""}" data-a="cmt" data-id="${id}" aria-expanded="${!!showC}">💬 ${esc(t("comment"))}</button></div>
+   ${ph.length?`<div class="thumbs">${ph.map(p=>`<div class="thumb"><img src="${p.data}" alt="QBA"><button type="button" aria-label="${esc(t("removePhoto"))}" data-a="rmph" data-id="${id}" data-p="${p.id}">✕</button></div>`).join("")}</div>`:""}
+   ${showC?`<textarea data-cmt="${id}" aria-label="${esc(t("comment"))} QBA">${esc(cm)}</textarea>`:""}
+  </article>`;}
+/* photos of the questions shown, plus the QBA card */
+const photoList=()=>ACTIVE().flatMap(i=>(S.photos[i.id]||[]).map(p=>({i,p}))).concat(qbaActive()?(S.photos[QBA_ID]||[]).map(p=>({i:QBA_INFO,p})):[]);
 function cardHTML(ind){
   const D=dom(ind.d),a=ans(ind),s=itemScore(ind),ph=S.photos[ind.id]||[],cm=S.comments[ind.id]||"",showC=openComments.has(ind.id)||cm;
   const unit=ind.unit==="animal"?["🐴",isGroup()?"unit_animals":"unit_animal"]:ind.unit==="mgmt"?["📋","unit_mgmt"]:["🏠","unit_resource"];
@@ -4099,7 +4117,7 @@ function cardHTML(ind){
    <div class="zone-top"><div class="zone-name"><span class="qcode">${ind.code}</span>${esc(tx(ind,"name"))}</div><span class="badge ${scoreBadge(s)}">${esc(vtype(ind)==="check"&&Array.isArray(a)&&a.length?a.length+"/"+ind.items.length:answerLabel(ind))}</span></div>
    <p class="question">${esc(qText(ind))}</p>
    <div class="observe"><div class="lbl">${esc(t("whatObserve"))}</div><p>${esc(tx(ind,"help"))}</p><div class="chips"><span class="awin${ind.ref?"":" none"}">${esc(refLabel(ind))}</span><span class="unit">${unit[0]} ${esc(t(unit[1]))}</span>${S.info.role==="ext"&&ind.mgmt?`<span class="ask">🗣 ${esc(t("askMgr"))}</span>`:""}</div></div>
-   ${ind.calc==="box"?calcHTML(ind):""}${ind.id===QBA_IND?qbaHTML():""}
+   ${ind.calc==="box"?calcHTML(ind):""}
    ${answerControls(ind)}
    ${isFree()&&ind.naFree&&S.answers[ind.id]==null?`<p class="preset-note">${esc(t("naPreset"))}</p>`:""}
    <div class="photo-row"><button type="button" class="photo-btn" data-a="cam" data-id="${ind.id}">📷 ${esc(t("takePhoto"))}</button><button type="button" class="photo-btn" data-a="upl" data-id="${ind.id}">⬆ ${esc(t("uploadPhoto"))}</button><button type="button" class="photo-btn${cm?" has":""}" data-a="cmt" data-id="${ind.id}" aria-expanded="${!!showC}">💬 ${esc(t("comment"))}</button></div>
@@ -4122,7 +4140,7 @@ function viewAssess(){
    ${hid?`<p class="area-note">${esc(t("hidden",{n:hid}))}</p>`:""}
    ${!hasIndTranslation()?`<p class="area-note">${esc(t("indFallback"))}</p>`:""}
    ${D.key==="behaviour"?qbaTeaserHTML():""}
-   <div id="cards">${items.map(cardHTML).join("")}</div>
+   <div id="cards">${items.map(cardHTML).join("")}${D.key==="behaviour"&&S.info.level==="2"?(isGroup()?`<p class="area-note">📏 ${esc(t("qbaGroup"))}</p>`:qbaCardHTML()):""}</div>
    <div class="actions">${S.domain>0?`<button class="act secondary" data-a="prevD">← ${esc(t("prev"))}</button>`:"<span></span>"}${last?`<button class="act" data-a="tab" data-t="results">${esc(t("seeResults"))} →</button>`:`<button class="act" data-a="nextD">${esc(t("next"))} →</button>`}</div>
    <p class="section-title">${esc(t("secNotes"))}</p>
    <textarea data-f="notes" aria-label="${esc(t("secNotes"))}">${esc(I.notes)}</textarea>
@@ -4132,7 +4150,7 @@ function viewAssess(){
 function viewResults(){
   const sc=overallScore(),L=sc==null?null:levelOf(sc),I=S.info,missing=ACTIVE().length-answeredCount(),{strengths,improve}=itemsLists(),pri=priorityItems();
   const li=(x,rec)=>`<li><span class="code">${x.i.code}</span><span>${esc(tx(x.i,"name"))}<em>${esc(answerLabel(x.i))}${x.i.ref?" · "+esc(refShort(x.i)):""}</em>${rec?`<span class="rec"><b>${esc(t("recommendation"))}:</b> ${esc(tx(x.i,"rec"))}</span>`:""}</span></li>`;
-  const photos=ACTIVE().flatMap(i=>(S.photos[i.id]||[]).map(p=>({i,p})));
+  const photos=photoList();
   return `<section>
    <div class="summary"><div class="summary-top"><div>
      <div class="summary-label">${esc(t("overall"))}</div>
@@ -4152,7 +4170,7 @@ function viewResults(){
     <div class="card"><p class="section-title" style="margin-top:0">${esc(t("improvements"))}</p>${improve.length?`<ul class="items">${improve.map(x=>li(x,true)).join("")}</ul>`:`<p class="empty">${esc(t("noneYet"))}</p>`}</div>
    </div>
    ${photos.length?`<p class="section-title">${esc(t("secPhotos"))}</p><div class="gallery">${photos.map(x=>`<figure><img src="${x.p.data}" alt="${x.i.code}"><figcaption><b>${x.i.code}</b> ${esc(tx(x.i,"name"))}</figcaption></figure>`).join("")}</div>`:""}
-   ${qbaActive()&&qbaStats().n?`<p class="section-title">${esc(t("qbaTitle"))} · ${qbaCode()}</p><div class="card">${qbaResHTML(qbaStats(),true)}</div>`:""}
+   ${qbaActive()&&qbaStats().n?`<p class="section-title">${esc(t("qbaTitle"))}</p><div class="card">${qbaResHTML(qbaStats(),true)}</div>`:""}
    <div class="actions"><button class="act secondary" data-a="tab" data-t="assess">✎ ${esc(t("edit"))}</button><span class="btn-pair"><button class="act secondary" data-a="xls">📊 ${esc(t("xls"))}</button><button class="act" data-a="pdf">📄 ${esc(t("pdf"))}</button></span></div>
   </section>`;
 }
@@ -4164,7 +4182,7 @@ function viewMethod(){
    <div class="zones-guide">${DOMAINS.map(D=>`<div class="zg-card" style="--ac:${D.color}"><div class="zg-name">${esc(t("d_"+D.key))}</div><div class="zg-desc">${INDICATORS.filter(i=>i.d===D.key).length} ${esc(t("stInd"))} (${INDICATORS.filter(i=>i.d===D.key&&i.lvl===1).length} ${esc(t("lv1"))})</div></div>`).join("")}</div>
    <p class="section-title">${esc(t("typesTitle"))}</p>
    <div class="scale-list">${["yn","scale","freq","check","group"].map(k=>`<div><b>${esc(tyName[k])}</b><span>${esc(t("ty_"+k))}</span></div>`).join("")}</div>
-   <div class="intro-card">${esc(t("scaleDesc"))}<br><br>${esc(t("lvDesc"))}<br><br>${esc(t("freeIntro"))}<br><br>${esc(t("freeNote"))}<br><br>📏 ${esc(t("qbaTitle"))} (${qbaCode()}): ${esc(t("qbaNote"))} ${esc(t("qbaCredit"))}</div>
+   <div class="intro-card">${esc(t("scaleDesc"))}<br><br>${esc(t("lvDesc"))}<br><br>${esc(t("freeIntro"))}<br><br>${esc(t("freeNote"))}<br><br>📏 ${esc(t("qbaTitle"))}: ${esc(t("qbaNote"))} ${esc(t("qbaCredit"))}</div>
    <p class="section-title">${esc(t("levelsTitle"))}</p>
    ${LEVELS.map(L=>`<div class="lvl-row"><div class="lvl-score" style="background:${L.color}">${L.range}</div><div><div class="lvl-name">${esc(t("lv_"+L.k))}</div><div class="lvl-desc">${esc(t("ld_"+L.k))}</div></div></div>`).join("")}
    <p class="section-title">${esc(t("mapTitle"))}</p>
@@ -4184,7 +4202,8 @@ function renderFooter(){
    <div class="foot-row"><div class="eu">${euFlagSVG()}<p><strong>${esc(t("funded"))}</strong><br>${esc(t("disclaimer"))}</p></div></div>
    <div class="foot-row"><span><button class="linkish" data-a="legal">${esc(t("legal"))}</button> · <button class="linkish" data-a="clear">${esc(t("clearData"))}</button></span><span>${esc(t("privacy"))}</span></div>`;
 }
-function refreshCard(id){const ind=INDICATORS.find(i=>i.id===id),el=document.getElementById("card_"+id);if(el)el.outerHTML=cardHTML(ind);
+function refreshCard(id){if(id===QBA_ID){const q=document.getElementById("card_"+id);if(q)q.outerHTML=qbaCardHTML();return;}
+  const ind=INDICATORS.find(i=>i.id===id),el=document.getElementById("card_"+id);if(el)el.outerHTML=cardHTML(ind);
   const a=document.getElementById("areas");if(a)a.innerHTML=areaBtns();const p=document.getElementById("prog");if(p)p.innerHTML=progressHTML();}
 function go(patch,scroll){Object.assign(S,patch);save();render();if(!scroll)return;
   const tabs=document.querySelector(".tabs"),sticky=tabs&&getComputedStyle(tabs).position==="sticky",off=sticky?tabs.offsetHeight+8:8;
@@ -4247,19 +4266,19 @@ async function buildPdf(){
       [{text:"",fillColor:hf},{text:t("indicator"),bold:true,fillColor:hf},{text:t("awinCol"),bold:true,fillColor:hf,fontSize:7},{text:t("weight"),bold:true,fillColor:hf,fontSize:7},{text:t("answer"),bold:true,fillColor:hf},{text:t("comment"),bold:true,fillColor:hf}],
       ...ACTIVE().filter(i=>i.d===D.key).map(i=>{const a=ans(i),bad=critBad(i);return [{text:i.code,bold:true,color:D.hex},{stack:[{text:[{text:tx(i,"name"),bold:true},i.crit?{text:"  ["+t("critical")+"]",color:"#B23B32",fontSize:7}:""]},{text:qText(i),color:SOFT,fontSize:7.5}]},{text:!i.ref?"—":i.ref[0]==="TS"?"TS "+i.ref[1]:i.ref[1]+" ("+t("awinPage")+" "+i.ref[2]+")",fontSize:7,color:i.ref?TEAL:SOFT},{text:String(i.w),alignment:"center"},{text:answerLabel(i),color:bad?"#B23B32":(a!=null?DEEP:"#9aa79f"),bold:bad},{text:S.comments[i.id]||"",fontSize:7.5}]})]},
       layout:{hLineWidth:(i)=>i===0?0:.5,vLineWidth:()=>0,hLineColor:()=>LINE,paddingTop:()=>3,paddingBottom:()=>3},fontSize:8.5,margin:[0,0,0,10]});});
-  if(qbaActive()&&qbaStats().n){const st=qbaStats(),W=236,RED="#B23B32";
+  if(qbaActive()&&(qbaStats().n||S.comments[QBA_ID])){const st=qbaStats(),W=236,RED="#B23B32";
     const vas=v=>({canvas:[{type:"line",x1:0,y1:7,x2:W,y2:7,lineWidth:.9,lineColor:DEEP},{type:"line",x1:0,y1:2,x2:0,y2:12,lineWidth:.9,lineColor:DEEP},{type:"line",x1:W,y1:2,x2:W,y2:12,lineWidth:.9,lineColor:DEEP}].concat(v==null?[]:[{type:"ellipse",x:W*v/QBA_LEN,y:7,r1:3.6,r2:3.6,color:TEAL}])});
     const box=(lab,val,sub,col)=>({stack:[{text:lab.toUpperCase(),fontSize:7.5,color:SOFT,characterSpacing:.6},{text:val,fontSize:15,bold:true,color:col},{text:sub,fontSize:7.5,color:SOFT}]});
     const sum=o=>(o.n?num1(o.sum):"–")+" / "+o.total*QBA_LEN+" mm · "+o.n+"/"+o.total;
-    const qi=INDICATORS.find(i=>i.id===QBA_IND);
-    content.push({stack:[sec(t("qbaTitle")+" · "+qi.code+" "+tx(qi,"name")),
+    content.push({stack:[sec(t("qbaTitle")),
       {text:t("qbaSub")+". "+t("qbaMin")+" = 0 mm, "+t("qbaMax").toLowerCase()+" = "+QBA_LEN+" mm.",fontSize:8,color:SOFT,margin:[0,0,0,4]},
       {table:{widths:[120,W+8,52,"*"],body:QBA.map(q=>{const v=qbaVal(q.k);return [{text:t("qb_"+q.k),bold:true},vas(v),{text:v==null?"–":num1(v)+" mm",alignment:"right",color:v==null?"#9aa79f":DEEP},{text:t(q.c==="neg"?"qbaNeg":"qbaPos"),fontSize:7.5,color:q.c==="neg"?RED:TEAL}];})},
        layout:{hLineWidth:(i)=>i===0?0:.5,vLineWidth:()=>0,hLineColor:()=>LINE,paddingTop:()=>3,paddingBottom:()=>2},fontSize:9},
       {columns:[box(t("qbaNeg"),(st.neg.mean==null?"–":num1(st.neg.mean))+" "+t("qbaMeanU"),sum(st.neg),RED),box(t("qbaPos"),(st.pos.mean==null?"–":num1(st.pos.mean))+" "+t("qbaMeanU"),sum(st.pos),TEAL),box(t("qbaBal"),(st.bal==null?"–":signed1(st.bal))+" mm",t("qbaBalSub"),st.bal!=null&&st.bal<0?RED:DEEP)],columnGap:12,margin:[0,8,0,0]},
-      st.complete?{text:t("answer")+" ("+qi.code+"): "+answerLabel(qi),bold:true,fontSize:9,margin:[0,6,0,0]}:{text:t("qbaInc",{n:st.n}),color:"#8A5A12",fontSize:8.5,margin:[0,6,0,0]},
+      st.complete?"":{text:t("qbaInc",{n:st.n}),color:"#8A5A12",fontSize:8.5,margin:[0,6,0,0]},
+      S.comments[QBA_ID]?{text:[{text:t("comment")+": ",bold:true},S.comments[QBA_ID]],fontSize:8.5,margin:[0,6,0,0]}:"",
       {text:t("qbaNote"),fontSize:7.5,italics:true,color:SOFT,margin:[0,4,0,0]},{text:t("qbaCredit"),fontSize:7.5,color:SOFT,margin:[0,2,0,0]}],unbreakable:true});}
-  const photos=ACTIVE().flatMap(i=>(S.photos[i.id]||[]).map(p=>({i,p})));
+  const photos=photoList();
   if(photos.length){content.push({text:"",pageBreak:"after"},sec(t("secPhotos")));
     for(let k=0;k<photos.length;k+=3) content.push({columns:photos.slice(k,k+3).map(x=>({stack:[{image:x.p.data,fit:[160,160]},{text:[{text:x.i.code+" ",bold:true},tx(x.i,"name")],fontSize:7.5,color:SOFT,margin:[0,3,0,0]}]})).concat(Array(3-Math.min(3,photos.length-k)).fill({text:""})),columnGap:12,margin:[0,0,0,12],unbreakable:true});}
   content.push({stack:[sec(t("legal")),...credits.map(c=>({text:c,fontSize:8})),{text:t("legalUse"),fontSize:8,margin:[0,3,0,3]},{text:AWIN_CITE,fontSize:8,color:TEAL},{text:t("tsLabel")+" GM07 · Sustainable manure management",fontSize:8,color:TEAL,margin:[0,0,0,6]},
@@ -4291,7 +4310,7 @@ function loadXlsx(){if(window.XLSX)return Promise.resolve(true);
 function excelData(){
   const I=S.info,sc=overallScore(),L=sc==null?null:levelOf(sc),act=ACTIVE(),r2=v=>v==null?"":Math.round(v*100)/100,r1=v=>v==null?"":Math.round(v*10)/10;
   const summary=[["Equine Welfare Index Calculator — Digital Tools by EUnetHorse"],
-    ["Methodology","EWI-MVP-0.11 (provisional, pending scientific validation)"],["Exported",new Date().toISOString().slice(0,16).replace("T"," ")],["Language",lang],[],
+    ["Methodology","EWI-MVP-0.12 (provisional, pending scientific validation)"],["Exported",new Date().toISOString().slice(0,16).replace("T"," ")],["Language",lang],[],
     ["Field","Value","Key"],["Identification",I.equineId],["Type of assessment",t("type_"+I.evalType),I.evalType],["Completed by",t("role_"+I.role),I.role],
     ["Housing system",t("h_"+I.housing),I.housing],["Assessment level",t(I.level==="2"?"lv2":"lv1"),I.level==="2"?2:1],["Date",I.date],["Assessor",I.evaluator],["General notes",I.notes],[],
     ["Overall EWI score (0–100)",sc==null?"":sc],["Classification",L?t("lv_"+L.k):"",L?L.k:""],[],
@@ -4303,12 +4322,12 @@ function excelData(){
     answers.push([i.code,i.id,t("d_"+i.d),i.d,tx(i,"name"),qText(i),i.unit==="animal"?"animal":i.unit==="mgmt"?"management":"resource",gmode(i)?"group":vtype(i),i.ref?refShort(i):"",i.lvl,i.w,i.crit?"yes":"no",
       a==null?"":answerLabel(i),a==null?"":Array.isArray(a)?a.join(";"):a,r2(p),a==null?"not_answered":a==="dk"?"dont_know":a==="na"?"not_applicable":"scored",critBad(i)?"yes":"no",S.comments[i.id]||"",(S.photos[i.id]||[]).length]);});
   let qba=null;
-  if(qbaActive()){const st=qbaStats(),qi=INDICATORS.find(i=>i.id===QBA_IND),a=ans(qi);
+  if(qbaActive()){const st=qbaStats();
     qba=[["Order","Descriptor","Descriptor key","Category","Score (mm, 0–120)"],
       ...QBA.map((q,n)=>{const v=qbaVal(q.k);return [n+1,t("qb_"+q.k),q.k,q.c==="neg"?"negative":"positive",v==null?"":v];}),[],
       ["","Descriptors scored","","",st.n],["","Negative sum (mm, max. 840)","","",st.neg.n?r1(st.neg.sum):""],["","Negative mean (mm)","","",r1(st.neg.mean)],
       ["","Positive sum (mm, max. 720)","","",st.pos.n?r1(st.pos.sum):""],["","Positive mean (mm)","","",r1(st.pos.mean)],["","Net balance (mm) = positive mean − negative mean","","",r1(st.bal)],
-      ["","Body language answer ("+qi.code+")",a==null?"":a,"",a==null?"":answerLabel(qi)],[],
+      ["","Comment","","",S.comments[QBA_ID]||""],["","Photos","","",(S.photos[QBA_ID]||[]).length],[],
       ["",T.en.qbaNote],["",T.en.qbaCredit]];}
   return {summary,answers,qba};}
 function buildWorkbook(){const d=excelData(),wb=XLSX.utils.book_new(),add=(rows,name,cols)=>{const ws=XLSX.utils.aoa_to_sheet(rows);ws["!cols"]=cols.map(w=>({wch:w}));XLSX.utils.book_append_sheet(wb,ws,name);};
@@ -4339,8 +4358,8 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b
     case "pdf": downloadPdf(b);break;
     case "xls": downloadExcel(b);break;
     case "qbaClr": qbaSet(b.dataset.q,null);saveNow();{const v=document.querySelector(`.qba-vas[data-q="${b.dataset.q}"]`);if(v)v.focus({preventScroll:true});}break;
-    case "qbaReset": S.qba={};saveNow();refreshCard(QBA_IND);break;
-    case "qbaGo": S.info.level="2";S.tab="assess";S.domain=DOMAINS.findIndex(D=>D.key==="behaviour");qbaOpen=true;save();render();{const c=document.getElementById("card_"+QBA_IND);if(c){const tabs=document.querySelector(".tabs"),off=tabs&&getComputedStyle(tabs).position==="sticky"?tabs.offsetHeight+8:8;window.scrollTo(0,Math.max(0,c.getBoundingClientRect().top+window.scrollY-off));}}break;
+    case "qbaReset": S.qba={};saveNow();refreshCard(QBA_ID);break;
+    case "qbaGo": S.info.level="2";S.tab="assess";S.domain=DOMAINS.findIndex(D=>D.key==="behaviour");qbaOpen=true;save();render();{const c=document.getElementById("card_"+QBA_ID);if(c){const tabs=document.querySelector(".tabs"),off=tabs&&getComputedStyle(tabs).position==="sticky"?tabs.offsetHeight+8:8;window.scrollTo(0,Math.max(0,c.getBoundingClientRect().top+window.scrollY-off));}}break;
     case "new": confirmDialog(t("confirmNew"),resetAll);break;
     case "clear": confirmDialog(t("confirmNew"),resetAll);break;
     case "resumeKeep": restored=false;render();break;
@@ -4380,7 +4399,8 @@ sel.innerHTML=LANGS.map(([c,n])=>`<option value="${c}">${n}</option>`).join("");
 sel.addEventListener("change",()=>{lang=sel.value;try{localStorage.setItem("ewi-lang",lang)}catch(e){}render();});
 
 (async function(){lang=initialLang();sel.value=lang;render();getDownloads();
-  if(await store.open()){const saved=await store.get(STORE_KEY);if(saved&&saved.info){S=Object.assign(blank(),saved);S.info=Object.assign(blank().info,S.info);S.calc=S.calc||{};restored=Object.keys(S.answers||{}).length>0;render();}}})();
+  if(await store.open()){const saved=await store.get(STORE_KEY);if(saved&&saved.info){S=Object.assign(blank(),saved);S.info=Object.assign(blank().info,S.info);S.calc=S.calc||{};
+    ["photos","comments"].forEach(k=>{const o=S[k]||{};if(o["EWI-BEH-008"]&&!o[QBA_ID]){o[QBA_ID]=o["EWI-BEH-008"];delete o["EWI-BEH-008"];}});restored=Object.keys(S.answers||{}).length>0||Object.keys(S.qba||{}).length>0;render();}}})();
 </script>
 <script defer src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.10/build/pdfmake.min.js"></script>
 <script>/* unified header boot */
