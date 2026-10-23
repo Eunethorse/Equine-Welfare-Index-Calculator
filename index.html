@@ -1113,7 +1113,7 @@ en:{d_nutrition:"Good feeding",d_housing:"Good housing",d_health:"Good health",d
  housing:"Housing system",h_indoor:"Box only",h_mixed:"Box with turnout",h_outdoor:"Outdoors in a group",
  level:"Assessment level",lv1:"Quick self-screening",lv2:"Full assessment (technician)",
  hidden:"{n} questions hidden: not applicable to this housing system or level.",
- withers:"Height at withers (cm)",boxL:"Box length (m)",boxW:"Box width (m)",calcRes:"Box area {a} m² · AWIN minimum {m} m²",
+ withers:"Height at withers (cm)",boxL:"Box length (m)",boxW:"Box width (m)",calcRes:"Box area {a} m² · AWIN minimum {m} m²",padL:"Paddock length (m)",padW:"Paddock width (m)",padN:"Horses using it at the same time",calcResPad:"{a} m² per horse · minimum {m} m²",
  tsLabel:"EUnetHorse Technical Sheet",stNull:"Don't know",typesTitle:"Answer types",
  ty_yn:"Yes / No: facts about resources and management. Yes = 3 points, No = 0, reversed when the question describes a problem.",
  ty_scale:"AWIN categories: the options defined in the AWIN protocol, from best (3 points) to worst (0).",
@@ -1273,7 +1273,7 @@ es:{d_nutrition:"Buena alimentación",d_housing:"Buen alojamiento",d_health:"Bue
  housing:"Sistema de alojamiento",h_indoor:"Solo box",h_mixed:"Box con salidas",h_outdoor:"Exterior en grupo",
  level:"Nivel de evaluación",lv1:"Autoevaluación rápida",lv2:"Evaluación completa (técnico)",
  hidden:"{n} preguntas ocultas: no se aplican a este sistema de alojamiento o nivel.",
- withers:"Alzada a la cruz (cm)",boxL:"Largo del box (m)",boxW:"Ancho del box (m)",calcRes:"Superficie del box {a} m² · mínimo AWIN {m} m²",
+ withers:"Alzada a la cruz (cm)",boxL:"Largo del box (m)",boxW:"Ancho del box (m)",calcRes:"Superficie del box {a} m² · mínimo AWIN {m} m²",padL:"Largo del paddock (m)",padW:"Ancho del paddock (m)",padN:"Caballos que lo usan a la vez",calcResPad:"{a} m² por caballo · mínimo {m} m²",
  tsLabel:"Ficha Técnica EUnetHorse",stNull:"No lo sé",typesTitle:"Tipos de respuesta",
  ty_yn:"Sí / No: hechos sobre recursos y manejo. Sí = 3 puntos, No = 0, a la inversa cuando la pregunta describe un problema.",
  ty_scale:"Categorías AWIN: las opciones definidas en el protocolo AWIN, de la mejor (3 puntos) a la peor (0).",
@@ -1876,13 +1876,13 @@ const INDICATORS = [
 "en": {
 "name": "Roughage most of the day",
 "question": "Does the horse have roughage (hay, haylage, grass or straw) available for most of the day?",
-"help": "Look at racks, nets or the floor at different times of the day and check how much roughage is given. A guide is at least 1.5–2% of body weight per day.",
+"help": "Look at racks, nets or the floor at several times during the day: the horse should rarely be left with nothing to eat for long periods. This question is about availability across the day — the overnight gap is checked separately in 'Roughage at night'. On total amount, a guide is 1.5–2% of body weight per day.",
 "rec": "Give at least 1.5–2% of body weight per day as roughage, spread over the day. Use slow-feeder nets to extend eating time."
 },
 "es": {
 "name": "Forraje la mayor parte del día",
 "question": "¿Tiene el caballo forraje (heno, henolaje, hierba o paja) disponible la mayor parte del día?",
-"help": "Mira henileras, redes o suelo en distintos momentos del día y comprueba cuánto forraje se da. Como guía, al menos un 1,5–2% del peso corporal al día.",
+"help": "Mira henileras, redes o suelo en varios momentos del día: el caballo no debería quedarse sin nada que comer durante periodos largos. Esta pregunta trata de la disponibilidad a lo largo del día; el intervalo nocturno se comprueba aparte en 'Forraje por la noche'. Sobre la cantidad total, una guía es el 1,5–2% del peso corporal al día.",
 "rec": "Da al menos un 1,5–2% del peso corporal al día en forraje, repartido a lo largo del día. Usa redes de alimentación lenta para alargar el tiempo de ingesta."
 }
 },
@@ -1920,14 +1920,14 @@ const INDICATORS = [
 "tx": {
 "en": {
 "name": "Roughage quality",
-"question": "Is the roughage free of dust and mould?",
-"help": "Shake a handful and smell it: dust clouds, white or grey mould, a musty smell, soil or toxic plants mean poor quality.",
+"question": "Is the roughage clean and of good quality — free of dust, mould, soil and toxic plants?",
+"help": "Shake a handful and smell it: dust clouds, white or grey mould, a musty smell, soil or toxic plants all mean poor quality. Answer no if any of these is present, even without a musty smell.",
 "rec": "Store roughage dry and ventilated, off the ground. Discard mouldy or very dusty batches; soak or steam hay for horses with breathing problems."
 },
 "es": {
 "name": "Calidad del forraje",
-"question": "¿Está el forraje libre de polvo y moho?",
-"help": "Sacude un puñado y huélelo: nubes de polvo, moho blanco o gris, olor a humedad, tierra o plantas tóxicas indican mala calidad.",
+"question": "¿Está el forraje limpio y es de buena calidad, sin polvo, moho, tierra ni plantas tóxicas?",
+"help": "Sacude un puñado y huélelo: nubes de polvo, moho blanco o gris, olor a humedad, tierra o plantas tóxicas indican mala calidad. Responde no si está presente cualquiera de ellos, aunque no haya olor a humedad.",
 "rec": "Almacena el forraje seco, ventilado y separado del suelo. Desecha los lotes con moho o mucho polvo; remoja o vaporiza el heno para caballos con problemas respiratorios."
 }
 },
@@ -1961,13 +1961,13 @@ const INDICATORS = [
 "en": {
 "name": "Grazing",
 "question": "In the grazing season, how often does the horse graze on pasture?",
-"help": "Count the days per week the horse is out on pasture during the grazing season. Outside the season, answer for the last grazing season.",
+"help": "Count the days per week the horse is out on pasture in a typical week of the grazing season. If access changes a lot across the season (for example full-time for a few weeks, then none), answer for the larger part of the season and note the pattern in the comment. Outside the season, answer for the last grazing season.",
 "rec": "Offer grazing on pasture every day in the grazing season when possible. If pasture is limited, use a track system or strip grazing, and limit grazing time for horses prone to laminitis."
 },
 "es": {
 "name": "Pastoreo",
 "question": "En la temporada de pastoreo, ¿con qué frecuencia pasta el caballo en pradera?",
-"help": "Cuenta los días por semana que el caballo sale a la pradera durante la temporada de pastoreo. Fuera de temporada, responde pensando en la última temporada de pastoreo.",
+"help": "Cuenta los días por semana que el caballo sale a la pradera en una semana típica de la temporada de pastoreo. Si el acceso cambia mucho a lo largo de la temporada (por ejemplo, a tiempo completo unas semanas y luego nada), responde según la mayor parte de la temporada y anota el patrón en el comentario. Fuera de temporada, responde pensando en la última temporada de pastoreo.",
 "rec": "Ofrece pastoreo en pradera a diario durante la temporada cuando sea posible. Si la pradera es limitada, usa un sistema de track o pastoreo en franjas, y limita el tiempo en los caballos propensos a laminitis."
 }
 },
@@ -2403,16 +2403,17 @@ const INDICATORS = [
 "en": {
 "name": "Paddock space per horse",
 "question": "Is there at least 70 m² of paddock per adult horse (85 m² per mare with foal)?",
-"help": "Measure the paddock (length × width) and divide by the number of horses that use it at the same time. Reference values: 70 m² per adult horse and 85 m² per mare with foal, the minimum applied in Poland. Check the rules that apply in your country. How many days a week and how many hours the horses are loose is asked in Appropriate behaviour (free movement and hours loose outdoors).",
+"help": "Enter the paddock sides and the number of horses that use it at the same time: the app works out the area per horse and answers for you. Reference values: 70 m² per adult horse and 85 m² per mare with foal, the minimum applied in Poland. The calculator uses 70 m²; for a mare with foal, check against 85 m². Check the rules that apply in your country. How many days a week and how many hours the horses are loose is asked in Appropriate behaviour (free movement and hours loose outdoors).",
 "rec": "Enlarge the paddock, reduce the number of horses that use it at the same time, or turn them out in turns."
 },
 "es": {
 "name": "Superficie de paddock por caballo",
 "question": "¿Hay al menos 70 m² de paddock por caballo adulto (85 m² por yegua con potro)?",
-"help": "Mide el paddock (largo × ancho) y divide entre el número de caballos que lo usan a la vez. Valores de referencia: 70 m² por caballo adulto y 85 m² por yegua con potro, el mínimo que se aplica en Polonia. Comprueba la normativa de tu país. Cuántos días a la semana y cuántas horas están sueltos los caballos se pregunta en Comportamiento apropiado (movimiento libre y horas sueltos al aire libre).",
+"help": "Introduce los lados del paddock y el número de caballos que lo usan a la vez: la app calcula la superficie por caballo y responde por ti. Valores de referencia: 70 m² por caballo adulto y 85 m² por yegua con potro, el mínimo que se aplica en Polonia. La calculadora usa 70 m²; para una yegua con potro, compara con 85 m². Comprueba la normativa de tu país. Cuántos días a la semana y cuántas horas están sueltos los caballos se pregunta en Comportamiento apropiado (movimiento libre y horas sueltos al aire libre).",
 "rec": "Amplía el paddock, reduce el número de caballos que lo usan a la vez o sácalos por turnos."
 }
 },
+"calc": "paddock",
 "unit": "resource",
 "noFree": true,
 "gq": {
@@ -2574,14 +2575,14 @@ const INDICATORS = [
 "tx": {
 "en": {
 "name": "Exercise out of the box",
-"question": "How often is the horse taken out of the box for exercise (riding, lunging, walking in hand or horse walker)?",
-"help": "Count the days in a normal week on which the horse is exercised out of the box, as in the AWIN exercise indicator. Time loose in a paddock or pasture is asked in Appropriate behaviour.",
+"question": "How often is the horse actively exercised out of the box (riding, lunging, walking in hand, horse walker or groundwork)?",
+"help": "Count the days in a normal week on which the horse is actively exercised out of the box — ridden, lunged, walked in hand, on the horse walker, or doing groundwork or other structured work, including enrichment such as scentwork. Free time loose in a paddock or pasture is not counted here; it is asked in Appropriate behaviour. If the horse lives out and is never stabled, this question does not apply.",
 "rec": "Exercise the horse every day and avoid long periods of continuous stabling."
 },
 "es": {
 "name": "Ejercicio fuera del box",
-"question": "¿Con qué frecuencia se saca al caballo del box para hacer ejercicio (monta, cuerda, paseo del diestro o caminador)?",
-"help": "Cuenta los días de una semana normal en los que el caballo hace ejercicio fuera del box, como en el indicador de ejercicio de AWIN. El tiempo suelto en paddock o pradera se pregunta en Comportamiento apropiado.",
+"question": "¿Con qué frecuencia hace el caballo ejercicio activo fuera del box (monta, cuerda, paseo del diestro, caminador o trabajo en el suelo)?",
+"help": "Cuenta los días de una semana normal en los que el caballo hace ejercicio activo fuera del box: montado, a la cuerda, del diestro, en el caminador, o haciendo trabajo en el suelo u otro trabajo estructurado, incluido el enriquecimiento como el trabajo de olfato (scentwork). El tiempo suelto en paddock o pradera no se cuenta aquí; se pregunta en Comportamiento apropiado. Si el caballo vive fuera y nunca se estabula, esta pregunta no aplica.",
 "rec": "Haz que el caballo haga ejercicio todos los días y evita periodos largos de estabulación continua."
 }
 },
@@ -2631,21 +2632,21 @@ const INDICATORS = [
 "tx": {
 "en": {
 "name": "Hours of exercise",
-"question": "On the days it is exercised, how long is the horse out of the box?",
-"help": "Add up the exercise time on a normal day: riding, lunging, walking in hand or horse walker. Time loose in a paddock or pasture is asked in Appropriate behaviour.",
+"question": "On the days it is exercised, how long does the active exercise last?",
+"help": "Add up the active exercise time on a normal day: riding, lunging, walking in hand, horse walker or groundwork. Count the time actually working, not time loose in a paddock or pasture (that is asked in Appropriate behaviour).",
 "rec": "Aim for at least 1 hour of exercise on each day, and add daily time loose in a paddock or pasture."
 },
 "es": {
 "name": "Horas de ejercicio",
-"question": "Los días que hace ejercicio, ¿cuánto tiempo está el caballo fuera del box?",
-"help": "Suma el tiempo de ejercicio en un día normal: monta, cuerda, paseo del diestro o caminador. El tiempo suelto en paddock o pradera se pregunta en Comportamiento apropiado.",
+"question": "Los días que hace ejercicio, ¿cuánto dura el ejercicio activo?",
+"help": "Suma el tiempo de ejercicio activo en un día normal: monta, cuerda, paseo del diestro, caminador o trabajo en el suelo. Cuenta el tiempo de trabajo real, no el tiempo suelto en paddock o pradera (eso se pregunta en Comportamiento apropiado).",
 "rec": "Procura al menos 1 hora de ejercicio cada día y añade tiempo diario suelto en paddock o pradera."
 }
 },
 "unit": "mgmt",
 "gq": {
-"en": "On the days they are exercised, how long are the horses out of their boxes?",
-"es": "Los días que hacen ejercicio, ¿cuánto tiempo están los caballos fuera del box?"
+"en": "On the days they are exercised, how long does the active exercise last?",
+"es": "Los días que hacen ejercicio, ¿cuánto dura el ejercicio activo?"
 }
 },
 {
@@ -3030,13 +3031,13 @@ const INDICATORS = [
 "en": {
 "name": "Daily health check",
 "question": "Which of these are checked on every horse every day?",
-"help": "Tick each item that is checked on every horse every day. Normal breathing at rest is 10–24 breaths per minute, quiet and without effort.",
+"help": "Tick each item that is checked on every horse every day. For breathing, what matters day to day is that it looks quiet and effortless at rest; laboured, noisy or very fast breathing is a warning sign.",
 "rec": "Set up a daily check routine covering all six items and record anything abnormal."
 },
 "es": {
 "name": "Revisión diaria de salud",
 "question": "¿Cuáles de estos aspectos se revisan en cada caballo todos los días?",
-"help": "Marca cada aspecto que se revisa en cada caballo todos los días. La respiración normal en reposo es de 10–24 respiraciones por minuto, tranquila y sin esfuerzo.",
+"help": "Marca cada aspecto que se revisa en cada caballo todos los días. En cuanto a la respiración, lo importante en el día a día es que sea tranquila y sin esfuerzo en reposo; una respiración trabajosa, ruidosa o muy rápida es una señal de alarma.",
 "rec": "Establece una rutina diaria que cubra los seis aspectos y anota cualquier anomalía."
 }
 },
@@ -3103,14 +3104,14 @@ const INDICATORS = [
 "tx": {
 "en": {
 "name": "Vet for emergencies",
-"question": "Can an equine vet be reached for emergencies, day and night?",
-"help": "The emergency number should be displayed where everyone working with the horses can see it.",
+"question": "Can an equine vet be reached for emergencies day and night, with the number available to everyone working with the horses?",
+"help": "Both conditions matter: a vet must be reachable around the clock, and the emergency number must be displayed or otherwise available to everyone working with the horses, not known to one person only.",
 "rec": "Agree a service with an equine vet and display the emergency number in the stable."
 },
 "es": {
 "name": "Veterinario para urgencias",
-"question": "¿Se puede localizar a un veterinario equino para urgencias, de día y de noche?",
-"help": "El número de urgencias debe estar a la vista de todas las personas que trabajan con los caballos.",
+"question": "¿Se puede localizar a un veterinario equino para urgencias de día y de noche, y está el número a disposición de todas las personas que trabajan con los caballos?",
+"help": "Importan las dos cosas: debe poder localizarse a un veterinario las 24 horas y el número de urgencias debe estar a la vista o disponible para todas las personas que trabajan con los caballos, no solo conocido por una.",
 "rec": "Acuerda un servicio con un veterinario equino y coloca el número de urgencias en la cuadra."
 }
 },
@@ -3305,13 +3306,13 @@ const INDICATORS = [
 "en": {
 "name": "Coat suited to the season",
 "question": "Is the coat healthy and suited to the season?",
-"help": "Healthy: smooth and shiny in summer, thick and even in winter. Unhealthy: dull, dry or rough out of season. Remember that the coat looks irregular while it is changing.",
+"help": "Healthy: smooth and shiny in summer, thick and even in winter. Unhealthy: dull, dry or rough out of season. Remember that the coat looks irregular while it is changing. If the horse is clipped, judge coat health (shine and condition), not its thickness, and check that it is rugged to make up for the removed coat.",
 "rec": "Groom regularly, use rugs only when the season requires it, and review feeding and parasite control if the coat stays dull or dry."
 },
 "es": {
 "name": "Pelaje adecuado a la estación",
 "question": "¿Está el pelaje sano y adecuado a la estación?",
-"help": "Sano: liso y brillante en verano, espeso y uniforme en invierno. No sano: apagado, seco o hirsuto fuera de temporada. Durante la muda el pelaje se ve irregular.",
+"help": "Sano: liso y brillante en verano, espeso y uniforme en invierno. No sano: apagado, seco o hirsuto fuera de temporada. Durante la muda el pelaje se ve irregular. Si el caballo está esquilado, valora la salud del pelaje (brillo y estado), no su grosor, y comprueba que lleve manta para compensar el pelo retirado.",
 "rec": "Cepilla con regularidad, usa mantas solo cuando la estación lo requiera y revisa alimentación y desparasitación si el pelaje sigue apagado o seco."
 }
 },
@@ -4056,9 +4057,12 @@ function answerControls(ind){
       <button type="button" class="nonebtn" aria-pressed="${Array.isArray(a)&&!a.length}" data-a="chkNone" data-id="${ind.id}">${esc(t("noneOf"))}</button>${dkB}</div>`;}
   const opts=optionsOf(ind);
   return `<div class="resp ${vtype(ind)}" style="--n:${opts.length}" role="group" aria-label="${esc(qText(ind))}">${opts.map(o=>`<button type="button" aria-pressed="${a===o.k}" data-a="resp" data-id="${ind.id}" data-k="${o.k}">${esc(o.l)}</button>`).join("")}${dkB}</div>`;}
-function calcHTML(ind){const c=S.calc||{},h=+c.withers,l=+c.l,w=+c.w,ok=h>0&&l>0&&w>0;
+function calcHTML(ind){const c=S.calc||{},dec=lang==="en"?".":",";
   const f=(k,lab,st)=>`<label class="calc-f"><span>${esc(t(lab))}</span><input type="number" inputmode="decimal" min="0" step="${st}" data-calc="${k}" value="${esc(c[k]||"")}"></label>`;
-  return `<div class="calc">${f("withers","withers","1")}${f("l","boxL","0.1")}${f("w","boxW","0.1")}<div class="calc-res" id="calcRes">${ok?esc(t("calcRes",{a:(l*w).toFixed(1).replace(".",lang==="en"?".":","),m:String(boxMin(h)).replace(".",lang==="en"?".":",")})):""}</div></div>`;}
+  if(ind.calc==="paddock"){const pl=+c.pl,pw=+c.pw,pn=+c.pn,ok=pl>0&&pw>0&&pn>0;
+    return `<div class="calc">${f("pl","padL","0.1")}${f("pw","padW","0.1")}${f("pn","padN","1")}<div class="calc-res" id="calcRes_pad">${ok?esc(t("calcResPad",{a:(pl*pw/pn).toFixed(0),m:"70"})):""}</div></div>`;}
+  const h=+c.withers,l=+c.l,w=+c.w,ok=h>0&&l>0&&w>0;
+  return `<div class="calc">${f("withers","withers","1")}${f("l","boxL","0.1")}${f("w","boxW","0.1")}<div class="calc-res" id="calcRes">${ok?esc(t("calcRes",{a:(l*w).toFixed(1).replace(".",dec),m:String(boxMin(h)).replace(".",dec)})):""}</div></div>`;}
 function qbaRowHTML(q){const v=qbaVal(q.k),name=t("qb_"+q.k);
   return `<div class="qba-row ${q.c}${v==null?"":" set"}" data-qrow="${q.k}"><span class="qba-name"><i></i>${esc(name)}</span>
     <div class="qba-scale"><div class="qba-vas" role="slider" tabindex="0" data-q="${q.k}" aria-label="${esc(name)}" aria-valuemin="0" aria-valuemax="${QBA_LEN}"${v==null?"":` aria-valuenow="${v}"`} aria-valuetext="${v==null?esc(t("notAnsweredB")):num1(v)+" mm"}"><span class="trk"></span><span class="cap l"></span><span class="cap r"></span><span class="mk" style="left:${v==null?0:(v/QBA_LEN*100).toFixed(2)}%"></span></div><div class="qba-ends"><span>${esc(t("qbaMin"))}</span><span>${esc(t("qbaMax"))}</span></div></div>
@@ -4117,7 +4121,7 @@ function cardHTML(ind){
    <div class="zone-top"><div class="zone-name"><span class="qcode">${ind.code}</span>${esc(tx(ind,"name"))}</div><span class="badge ${scoreBadge(s)}">${esc(vtype(ind)==="check"&&Array.isArray(a)&&a.length?a.length+"/"+ind.items.length:answerLabel(ind))}</span></div>
    <p class="question">${esc(qText(ind))}</p>
    <div class="observe"><div class="lbl">${esc(t("whatObserve"))}</div><p>${esc(tx(ind,"help"))}</p><div class="chips"><span class="awin${ind.ref?"":" none"}">${esc(refLabel(ind))}</span><span class="unit">${unit[0]} ${esc(t(unit[1]))}</span>${S.info.role==="ext"&&ind.mgmt?`<span class="ask">🗣 ${esc(t("askMgr"))}</span>`:""}</div></div>
-   ${ind.calc==="box"?calcHTML(ind):""}
+   ${ind.calc?calcHTML(ind):""}
    ${answerControls(ind)}
    ${isFree()&&ind.naFree&&S.answers[ind.id]==null?`<p class="preset-note">${esc(t("naPreset"))}</p>`:""}
    <div class="photo-row"><button type="button" class="photo-btn" data-a="cam" data-id="${ind.id}">📷 ${esc(t("takePhoto"))}</button><button type="button" class="photo-btn" data-a="upl" data-id="${ind.id}">⬆ ${esc(t("uploadPhoto"))}</button><button type="button" class="photo-btn${cm?" has":""}" data-a="cmt" data-id="${ind.id}" aria-expanded="${!!showC}">💬 ${esc(t("comment"))}</button></div>
@@ -4367,9 +4371,15 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b
     case "dlgClose": closeDialog();break;
   }});
 document.addEventListener("change",e=>{const f=e.target.dataset.f;if(f&&e.target.tagName==="SELECT"){S.info[f]=e.target.value;save();if(e.target.dataset.rerender)render();}});
-document.addEventListener("input",e=>{const ck=e.target.dataset.calc;if(ck){S.calc=S.calc||{};S.calc[ck]=e.target.value;const c=S.calc,h=+c.withers,l=+c.l,w=+c.w;
-    const ind=INDICATORS.find(i=>i.calc==="box");if(h>0&&l>0&&w>0){S.answers[ind.id]=(l*w>=boxMin(h))?"yes":"no";}saveSoon();
-    const el=document.getElementById("card_"+ind.id);if(el){const res=el.querySelector("#calcRes");const dec=lang==="en"?".":",";if(res)res.textContent=(h>0&&l>0&&w>0)?t("calcRes",{a:(l*w).toFixed(1).replace(".",dec),m:String(boxMin(h)).replace(".",dec)}):"";
+document.addEventListener("input",e=>{const ck=e.target.dataset.calc;if(ck){S.calc=S.calc||{};S.calc[ck]=e.target.value;const c=S.calc,dec=lang==="en"?".":",";
+    const isPad=(ck==="pl"||ck==="pw"||ck==="pn");
+    const ind=INDICATORS.find(i=>i.calc===(isPad?"paddock":"box"));if(!ind){saveSoon();return;}
+    if(isPad){const pl=+c.pl,pw=+c.pw,pn=+c.pn;if(pl>0&&pw>0&&pn>0){S.answers[ind.id]=(pl*pw/pn>=70)?"yes":"no";}}
+    else{const h=+c.withers,l=+c.l,w=+c.w;if(h>0&&l>0&&w>0){S.answers[ind.id]=(l*w>=boxMin(h))?"yes":"no";}}
+    saveSoon();
+    const el=document.getElementById("card_"+ind.id);if(el){
+      if(isPad){const pl=+c.pl,pw=+c.pw,pn=+c.pn,res=el.querySelector("#calcRes_pad");if(res)res.textContent=(pl>0&&pw>0&&pn>0)?t("calcResPad",{a:(pl*pw/pn).toFixed(0),m:"70"}):"";}
+      else{const h=+c.withers,l=+c.l,w=+c.w,res=el.querySelector("#calcRes");if(res)res.textContent=(h>0&&l>0&&w>0)?t("calcRes",{a:(l*w).toFixed(1).replace(".",dec),m:String(boxMin(h)).replace(".",dec)}):"";}
       el.querySelectorAll('.resp [data-a="resp"]').forEach(bt=>bt.setAttribute("aria-pressed",String(ans(ind)===bt.dataset.k)));
       const bd=el.querySelector(".zone-top .badge");if(bd){bd.className="badge "+scoreBadge(itemScore(ind));bd.textContent=answerLabel(ind);}el.classList.toggle("done",ans(ind)!=null);}
     const a=document.getElementById("areas");if(a)a.innerHTML=areaBtns();const pg=document.getElementById("prog");if(pg)pg.innerHTML=progressHTML();return;}
